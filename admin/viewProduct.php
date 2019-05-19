@@ -23,7 +23,7 @@
 				<th scope="col">Id</th>
 				<th scope="col">Title</th>
 				<th scope="col">Price</th>
-				<th scope="col">Brand</th>
+				<th scope="col">Supplier</th>
 				<th scope="col">Description</th>
 				<th scope="col">Feature</th>
 				<th scope="col">Color</th>
@@ -46,7 +46,7 @@
 				$id = $row["id"];
 				$title = $row["title"];
 				$price = $row["price"];
-				$brand = $row["brand"];
+				$supplier_id = $row["supplier_id"];
 				$desc = $row["description"];
 				$featured = $row["featured"];
 				$color = $row["color"];
@@ -54,8 +54,8 @@
 				$imgShow = ".".$img;
 
 				#SQL get brands name
-				$sql2 = "SELECT * FROM brands WHERE id=".$brand;
-				$brandArray = $conn->query($sql2);
+				$sql2 = "SELECT * FROM user_supplier WHERE id=".$supplier_id;
+				$supplierArray = $conn->query($sql2);
 				
 
 			
@@ -66,8 +66,8 @@
 					echo "<td>$price</td>";
 					
 					
-					while($brandName = mysqli_fetch_assoc($brandArray)) :
-							echo "<td>".$brandName['brand']."</td>";
+					while($supplierName = mysqli_fetch_assoc($supplierArray)) :
+							echo "<td>".$supplierName['nama_supplier']."</td>";
 					endwhile;
 					echo "<td>$desc</td>";
 					echo "<td>$featured</td>";

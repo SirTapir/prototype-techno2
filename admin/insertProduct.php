@@ -31,13 +31,13 @@
     </div>
 
     <div class="form-group">
-  <label for="sel1">Product Brand</label>
+  <label for="sel1">Supplier ID</label>
   <select class="form-control" id="sel1" name="productBrand">
     <?php
-		$sql = "SELECT * FROM brands";
+		$sql = "SELECT * FROM user_supplier";
 		$result = $conn->query($sql);
 		while($product = mysqli_fetch_assoc($result)) :											
-		echo "<option value='".$product['id']."'>".$product['brand']."</option>";
+		echo "<option value='".$product['id']."'>".$product['nama_supplier']."</option>";
 		endwhile;
 														
 	?>

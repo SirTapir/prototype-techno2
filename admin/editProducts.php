@@ -3,6 +3,7 @@
 	session_start();
 	require "connect.php";
 	include "header.php";
+
 	if(!isset($_SESSION["admin-username"])){ //if login in session is not set
     	header("Location: login.php");
 	}
@@ -108,6 +109,8 @@
 	      <label for="colors">Colors:</label>
 	      <input type="text" class="form-control"  placeholder="Use comma as separator (no spaces) ex:red,green,blue" name="productColors" value="<?=$product['color']; ?>" required>
 	    </div>
+
+	    <input type="hidden" id="productID" name="productID" value="<?=$product['id']; ?>">
 
 	    <button type="submit" class="btn btn-default">Submit</button>
 	  </form>
