@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2018 at 05:46 PM
--- Server version: 10.1.33-MariaDB
--- PHP Version: 7.2.6
+-- Generation Time: May 19, 2019 at 02:48 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -64,6 +62,20 @@ INSERT INTO `brands` (`id`, `brand`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `detail_transaction`
+--
+
+CREATE TABLE `detail_transaction` (
+  `id` int(11) NOT NULL,
+  `transaction_id` int(11) NOT NULL,
+  `products_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `harga` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -89,6 +101,67 @@ INSERT INTO `products` (`id`, `title`, `price`, `brand`, `image`, `description`,
 (4, 'Mechanical Keyboard', 1000000, 2, './images/product_Mechanical Keyboard_2.jpg', 'Advanced mechanical keyboard', 1, 'Red,Yellow,Green,Rainbow'),
 (5, 'Razer Laptop', 175000, 2, './images/product_Razer Laptop_2.jpg', 'Oldie but goodie from Razer (not really)', 0, 'Gray');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction`
+--
+
+CREATE TABLE `transaction` (
+  `id` int(11) NOT NULL,
+  `hotel_id` int(11) NOT NULL,
+  `supplier_id` int(11) NOT NULL,
+  `total_amount` double NOT NULL,
+  `status` text NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_hotel`
+--
+
+CREATE TABLE `user_hotel` (
+  `id` int(11) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `nama_hotel` text NOT NULL,
+  `alamat_hotel` text NOT NULL,
+  `no_telp` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_hotel`
+--
+
+INSERT INTO `user_hotel` (`id`, `email`, `password`, `nama_hotel`, `alamat_hotel`, `no_telp`) VALUES
+(1, 'hotel1@gmail.com', 'hotel1', 'POP! Hotel Gubeng', 'Jl. Bangka 8-18, Gubeng, Surabaya', '0812548321'),
+(2, 'hotel2@gmail.com', 'hotel2', 'Red Planet Surabaya', 'Jl. Arjuna No.64-66, Surabaya, Indonesia', '012548216547');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_supplier`
+--
+
+CREATE TABLE `user_supplier` (
+  `id` int(11) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `nama_supplier` text NOT NULL,
+  `alamat_supplier` text NOT NULL,
+  `no_telp` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_supplier`
+--
+
+INSERT INTO `user_supplier` (`id`, `email`, `password`, `nama_supplier`, `alamat_supplier`, `no_telp`) VALUES
+(1, 'supplier1@gmail.com', 'supplier1', 'Sukses Sejati Amenities', 'Perum Bohar Permai No B1, Kabupaten Sidoarjo, Jawa Timur', '081235860001'),
+(2, 'supplier2@gmail.com', 'supplier2', 'Sumber Lautan Abadi', 'Jl. Raya Darmo Baru Barat No.75, Sonokwijenan, Kec. Sukomanunggal, Kota SBY, Jawa Timur', '0317326773');
+
 --
 -- Indexes for dumped tables
 --
@@ -106,9 +179,33 @@ ALTER TABLE `brands`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `detail_transaction`
+--
+ALTER TABLE `detail_transaction`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_hotel`
+--
+ALTER TABLE `user_hotel`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_supplier`
+--
+ALTER TABLE `user_supplier`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -120,20 +217,36 @@ ALTER TABLE `products`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+--
+-- AUTO_INCREMENT for table `detail_transaction`
+--
+ALTER TABLE `detail_transaction`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-COMMIT;
-
+--
+-- AUTO_INCREMENT for table `transaction`
+--
+ALTER TABLE `transaction`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `user_hotel`
+--
+ALTER TABLE `user_hotel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `user_supplier`
+--
+ALTER TABLE `user_supplier`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
