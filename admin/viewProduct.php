@@ -2,7 +2,7 @@
 <?php
 	require "connect.php";
 	include "header.php";
-	if(!isset($_SESSION["username"])){ //if login in session is not set
+	if(!isset($_SESSION["admin-username"])){ //if login in session is not set
     	header("Location: login.php");
 	}
 ?>

@@ -12,7 +12,7 @@ if($_POST)
 	{
 		$username = $_POST["username"];
 		$pass = $_POST["pass"];
-		$_SESSION["username"] = $username;
+		$_SESSION["admin-username"] = $username;
 		
 		$query = "SELECT * from admin where username = '$username' and pass = '$pass'";
 		$q = mysqli_query($conn,$query) or die (mysqli_error($conn));

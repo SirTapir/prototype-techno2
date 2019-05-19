@@ -9,7 +9,7 @@
 			echo "<script> alert('Sorry, there was an error uploading your file.') </script>";
 		}
 	}
-  if(!isset($_SESSION["username"])){ //if login in session is not set
+  if(!isset($_SESSION["admin-username"])){ //if login in session is not set
       header("Location: login.php");
   }
 ?>
