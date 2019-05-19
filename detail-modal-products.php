@@ -21,13 +21,15 @@
 									<p><?=$product['description']; ?></p>
 									<hr />
 									<p>Price : Rp <?=$product['price']; ?></p>
-									<p>Brand : <?php 
-													$sql2 = "SELECT * FROM brands WHERE id=".$product['brand'];
-													$brandArray = $conn->query($sql2);
-													while($brandName = mysqli_fetch_assoc($brandArray)) :
-														echo $brandName['brand'];
+
+									<p>Supplier : <?php 
+													$sql2 = "SELECT * FROM user_supplier WHERE id=".$product['supplier_id'];
+													$supplierArray = $conn->query($sql2);
+													while($supplierName = mysqli_fetch_assoc($supplierArray)) :
+														echo $supplierName['nama_supplier'];
 													endwhile;
 												 ?> </p>
+
 									<form method="post">
 										<div class="form-group">
 											<div class="col-xs-3">
