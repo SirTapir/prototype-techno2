@@ -17,6 +17,8 @@
         </form>
         <ul class="nav navbar-nav navbar-right">
           <li>
+            <a class="navbar-brand" href="signup.php">Sign Up</a>
+            <a class="navbar-brand" href="signin.php">Sign In</a>
             <button class="btn btn-success" type="button" data-target="#shopcart" data-toggle="modal" style="margin-top:5px; margin-right:5px;"><i class="fa fa-shopping-cart" style="font-size:24px; color: white;"></i></a>
           </li>
         </ul>
