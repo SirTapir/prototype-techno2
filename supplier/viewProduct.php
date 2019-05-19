@@ -2,8 +2,9 @@
 <?php
 	require "connect.php";
 	include "header.php";
-	if(!isset($_SESSION["username"])){ //if login in session is not set
-    	header("Location: login.php");
+
+	if(!isset($_SESSION["user-supplier"])){ //if login in session is not set
+    	header("Location: ../login.php");
 	}
 ?>
 

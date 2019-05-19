@@ -1,5 +1,10 @@
 <?php
 	session_start();
+
+	if(!isset($_SESSION["user-hotel"])){ //if login in session is not set
+    	header("Location: ../login.php");
+	}
+
 	if(!isset($_SESSION['cart'])){
 		$_SESSION['cart']='empty';
 		$_SESSION['cart_id']=array();

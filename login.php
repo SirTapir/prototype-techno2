@@ -1,4 +1,45 @@
-<!DOCTYPE html>
+<?php
+session_start();
+require "connect.php";
+/*if(isset($_SESSION['user-hotel'])){
+    header("Location: hotel/index.php");
+}
+else if(isset($_SESSION['user-supplier'])){
+    header("Location: supplier/index.php");
+}*/
+
+if($_POST){
+    if($_POST['email'] != ""){
+        $email = $_POST['email'];
+        $pass = $_POST['password'];
+        
+        if($_POST['type'] == "hotel"){
+            $_SESSION['user-hotel'] = $email;
+            $query = "SELECT * from user_hotel where email = '$email' and password = '$pass'";
+            $q = mysqli_query($conn,$query) or die (mysqli_error($conn));
+            $res = mysqli_num_rows($q);
+        }
+        else if($_POST['type'] == "supplier"){
+            $_SESSION['user-supplier'] = $email;
+            $query = "SELECT * from user_supplier where email = '$email' and password = '$pass'";
+            $q = mysqli_query($conn,$query) or die (mysqli_error($conn));
+            $res = mysqli_num_rows($q);
+        }
+
+        if($res!=0 && isset($_SESSION['user-hotel'])){
+            header("Location: hotel/index.php");
+        }
+        else if($res!=0 && isset($_SESSION['user-supplier'])){
+            header("Location: supplier/viewProduct.php");
+        }
+        else
+        {
+            echo "<div class = 'alert alert-warning' role = 'alert'>Wrong username or password!</div>";
+        }
+    }
+}
+
+?>
 <html>
 <head>
     <title>Login Page</title>
@@ -82,12 +123,17 @@
             <div class="row wrapper">
                 <div class="col-md-6 login-form-1">
                     <h3>Log In</h3>
-                    <form>
+                    <form action="" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Email *" value="" />
+                            <h4>Company Type</h4>
+                            <input type="radio" name="type" value="supplier"> Supplier<br>
+                            <input type="radio" name="type" value="hotel"> Hotel<br>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Your Password *" value="" />
+                            <input type="text" class="form-control" placeholder="Your Email *" name="email" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Your Password *" name="password" />
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btnSubmit" value="Login" />

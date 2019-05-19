@@ -45,7 +45,7 @@ if(!isset($_SESSION)){
   <div class="collapse navbar-collapse" id="navbarColor01">
     
     <?php
-      if(!isset($_SESSION["username"]))
+      if(!isset($_SESSION["user-supplier"]))
       {
         echo '<ul class="navbar-nav ml-auto">
           <li class="nav-item ">
