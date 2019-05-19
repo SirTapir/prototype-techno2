@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2019 at 12:58 PM
+-- Generation Time: May 19, 2019 at 02:48 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -69,6 +69,7 @@ CREATE TABLE `detail_transaction` (
   `id` int(11) NOT NULL,
   `transaction_id` int(11) NOT NULL,
   `products_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
   `harga` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -111,7 +112,8 @@ CREATE TABLE `transaction` (
   `hotel_id` int(11) NOT NULL,
   `supplier_id` int(11) NOT NULL,
   `total_amount` double NOT NULL,
-  `status` text NOT NULL
+  `status` text NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -122,6 +124,8 @@ CREATE TABLE `transaction` (
 
 CREATE TABLE `user_hotel` (
   `id` int(11) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
   `nama_hotel` text NOT NULL,
   `alamat_hotel` text NOT NULL,
   `no_telp` varchar(15) NOT NULL
@@ -131,9 +135,9 @@ CREATE TABLE `user_hotel` (
 -- Dumping data for table `user_hotel`
 --
 
-INSERT INTO `user_hotel` (`id`, `nama_hotel`, `alamat_hotel`, `no_telp`) VALUES
-(1, 'POP! Hotel Gubeng', 'Jl. Bangka 8-18, Gubeng, Surabaya', '0812548321'),
-(2, 'Red Planet Surabaya', 'Jl. Arjuna No.64-66, Surabaya, Indonesia', '012548216547');
+INSERT INTO `user_hotel` (`id`, `email`, `password`, `nama_hotel`, `alamat_hotel`, `no_telp`) VALUES
+(1, 'hotel1@gmail.com', 'hotel1', 'POP! Hotel Gubeng', 'Jl. Bangka 8-18, Gubeng, Surabaya', '0812548321'),
+(2, 'hotel2@gmail.com', 'hotel2', 'Red Planet Surabaya', 'Jl. Arjuna No.64-66, Surabaya, Indonesia', '012548216547');
 
 -- --------------------------------------------------------
 
@@ -143,6 +147,8 @@ INSERT INTO `user_hotel` (`id`, `nama_hotel`, `alamat_hotel`, `no_telp`) VALUES
 
 CREATE TABLE `user_supplier` (
   `id` int(11) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
   `nama_supplier` text NOT NULL,
   `alamat_supplier` text NOT NULL,
   `no_telp` varchar(15) NOT NULL
@@ -152,9 +158,9 @@ CREATE TABLE `user_supplier` (
 -- Dumping data for table `user_supplier`
 --
 
-INSERT INTO `user_supplier` (`id`, `nama_supplier`, `alamat_supplier`, `no_telp`) VALUES
-(1, 'Sukses Sejati Amenities', 'Perum Bohar Permai No B1, Kabupaten Sidoarjo, Jawa Timur', '081235860001'),
-(2, 'Sumber Lautan Abadi', 'Jl. Raya Darmo Baru Barat No.75, Sonokwijenan, Kec. Sukomanunggal, Kota SBY, Jawa Timur', '0317326773');
+INSERT INTO `user_supplier` (`id`, `email`, `password`, `nama_supplier`, `alamat_supplier`, `no_telp`) VALUES
+(1, 'supplier1@gmail.com', 'supplier1', 'Sukses Sejati Amenities', 'Perum Bohar Permai No B1, Kabupaten Sidoarjo, Jawa Timur', '081235860001'),
+(2, 'supplier2@gmail.com', 'supplier2', 'Sumber Lautan Abadi', 'Jl. Raya Darmo Baru Barat No.75, Sonokwijenan, Kec. Sukomanunggal, Kota SBY, Jawa Timur', '0317326773');
 
 --
 -- Indexes for dumped tables
