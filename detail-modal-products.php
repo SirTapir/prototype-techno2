@@ -32,11 +32,13 @@
 
 									<form method="post">
 										<div class="form-group">
+											<!--
 											<div class="col-xs-3">
 												<label for="quantity" id="quantity-label">Quantity</label>
 
 												<input type="text" class="form-control" id="quantity-<?=$product['id']; ?>" name="quantity" style="margin-left: -15px;">
 											</div><br><br><br>
+											-->
 											<div class="form-group">
 												<label for="LED Color">Color</label>
 												<select name="ledColor" id="ledColor-<?=$product['id']; ?>" class="form-control">
@@ -56,7 +58,9 @@
 							</div>
 							<div class="modal-footer">
 								<button class="btn btn-default" data-dismiss="modal">Close</button>
+								<!--
 								<button class="btn btn-warning" type="submit" onclick="addtoCart(<?=$product['id']; ?>,document.getElementById('quantity-<?=$product['id']; ?>').value,document.getElementById('ledColor-<?=$product['id']; ?>').value)"> <span class='glyphicon glyphicon-shopping-cart'>Add To Cart</span></button>
+								!-->
 							</div>
 						</div>
 						

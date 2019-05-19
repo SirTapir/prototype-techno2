@@ -1,12 +1,6 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['cart'])){
-		$_SESSION['cart']='empty';
-		$_SESSION['cart_id']=array();
-		$_SESSION['cart_quantity']=array();
-		$_SESSION['cart_color']=array();
-		
-	}
+	
 	require_once "connect.php";
 	$sql = "SELECT * FROM products WHERE featured=1";
 	$result = $conn->query($sql);
