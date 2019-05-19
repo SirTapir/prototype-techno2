@@ -13,7 +13,7 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="center-block">
-										<img src="<?=$product['image']; ?>" alt="<?=$product['title']; ?>" class="details img-responsive">
+										<img src="<?='.'.$product['image']; ?>" alt="<?=$product['title']; ?>" class="details img-responsive">
 									</div>
 								</div>
 								<div class="col-sm-6">

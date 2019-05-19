@@ -59,21 +59,21 @@
 			<!-- Slides -->
 			<div class="carousel-inner">
 				<div class="item active">
-					<img src="images/carousel/1.jpg" alt="Item #1" style="height:500px ;width:auto ; margin:auto;">
+					<img src="../images/carousel/1.jpg" alt="Item #1" style="height:500px ;width:auto ; margin:auto;">
 					<div class="carousel-caption">
 				        <h3 style="color:black;">Our Company</h3>
 				        <p style="color:black;">The company is located on Surabaya</p>
 				    </div>
 				</div>
 				<div class="item">
-					<img src="images/carousel/2.jpg" alt="Item #2" style="height:500px; width:auto ; margin:auto;">
+					<img src="../images/carousel/2.jpg" alt="Item #2" style="height:500px; width:auto ; margin:auto;">
 					<div class="carousel-caption">
 				        <h3 style="color:black;">Employee</h3>
 				        <p style="color:black;">We hired talented people from around the world</p>
 				    </div>
 				</div>
 				<div class="item">
-					<img src="images/carousel/3.jpg" alt="Item #3" style="height:500px; width:auto ; margin:auto;">
+					<img src="../images/carousel/3.jpg" alt="Item #3" style="height:500px; width:auto ; margin:auto;">
 					<div class="carousel-caption">
 				        <h3 style="color:black;">Opportunity</h3>
 				        <p style="color:black;">Join us!</p>
@@ -105,7 +105,7 @@
 			<?php while($product = mysqli_fetch_assoc($result)) : ?>
 			<div class="col-md-3">
 				<h4><?=$product['title']; ?></h4>
-				<img src="<?=$product['image']; ?>" alt="<?=$product['title']; ?>" id="images">
+				<img src="<?='.'.$product['image']; ?>" alt="<?=$product['title']; ?>" id="images">
 				<p class="price">Price: Rp<?=$product['price']; ?></p>
 				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#details-<?=$product['id']; ?>">Details</button>
 			</div>

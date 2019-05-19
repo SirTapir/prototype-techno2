@@ -43,7 +43,7 @@
 								$name=mysqli_fetch_assoc($result);
 								echo "<div class='row'>
 											<div class='col-sm-1' style='padding-top:25px;'><button class='btn btn-danger' id='btn-".$index."' style='vertical-align: middle;' onclick='deleteArray($index)'><i class='fa fa-times' style='font-size:18px; font-color:white;'></i></div>
-											<div class='col-sm-3'><img src='".$name['image']."' style='margin:auto; height:auto; width:135px;'/></div>
+											<div class='col-sm-3'><img src='.".$name['image']."' style='margin:auto; height:auto; width:135px;'/></div>
 											<div class='col-sm-4' style='padding-top:30px;'>".$name['title']."</div>
 											<div class='col-sm-2' style='padding-top:30px;'>".$_SESSION['cart_quantity'][$index]."</div>
 											<div class='col-sm-2' style='padding-top:30px;'>".$_SESSION['cart_color'][$index]."</div>
