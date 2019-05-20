@@ -64,6 +64,7 @@
 		echo "</table>";
 
 		$_SESSION['total_amount'] = $total;
+		$_SESSION['transaction_count'] = $counter;
 	?>
 	<br>
 	<br>
