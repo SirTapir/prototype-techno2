@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2019 at 04:43 PM
+-- Generation Time: May 20, 2019 at 04:47 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -68,9 +68,12 @@ INSERT INTO `brands` (`id`, `brand`) VALUES
 CREATE TABLE `detail_transaction` (
   `id` int(11) NOT NULL,
   `transaction_id` int(11) NOT NULL,
-  `products_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `hotel_id` int(11) NOT NULL,
+  `supplier_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
-  `harga` double NOT NULL
+  `subtotal` double NOT NULL,
+  `status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -86,20 +89,20 @@ CREATE TABLE `products` (
   `supplier_id` int(11) NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `featured` tinyint(1) NOT NULL,
-  `color` text COLLATE utf8_unicode_ci NOT NULL
+  `featured` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `title`, `price`, `supplier_id`, `image`, `description`, `featured`, `color`) VALUES
-(1, 'Generic Keyboard', 1500000, 1, './images/product1.png', 'The brand new generic Keyboard ready to be used by you!', 1, 'Red,Green,Blue'),
-(2, 'Generic Mouse', 150000, 2, './images/product2.png', 'Brand new generic Mouse', 1, 'Yellow,Blue,Green'),
-(3, 'Microsoft Cap', 35000, 1, './images/product_Microsoft Cap_3.jpg', 'Brand new hat from microsoft', 1, 'Red,White,Blue,Green,Yellow'),
-(4, 'Mechanical Keyboard', 1000000, 2, './images/product_Mechanical Keyboard_2.jpg', 'Advanced mechanical keyboard', 1, 'Red,Yellow,Green,Rainbow'),
-(5, 'Razer Laptop', 175000, 2, './images/product_Razer Laptop_2.jpg', 'Oldie but goodie from Razer (not really)', 0, 'Gray');
+INSERT INTO `products` (`id`, `title`, `price`, `supplier_id`, `image`, `description`, `featured`) VALUES
+(1, 'Generic Keyboard', 1500000, 1, './images/product_Generic Keyboard_1.jpg', 'The brand new generic Keyboard ready to be used by you! ', 1),
+(2, 'Generic Mouse', 150000, 2, './images/product2.png', 'Brand new generic Mouse', 1),
+(3, 'Microsoft Cap', 35000, 1, './images/product_Microsoft Cap_3.jpg', 'Brand new hat from microsoft', 1),
+(4, 'Mechanical Keyboard', 1000000, 2, './images/product_Mechanical Keyboard_2.jpg', 'Advanced mechanical keyboard', 1),
+(5, 'Razer Laptop', 175000, 2, './images/product_Razer Laptop_2.jpg', 'Oldie but goodie from Razer (not really)', 0),
+(9, 'TestingProductBaru', 12345, 1, './images/product_TestingProductBaru_Sukses Sejati Amenities.jpg', 'test', 0);
 
 -- --------------------------------------------------------
 
@@ -110,7 +113,6 @@ INSERT INTO `products` (`id`, `title`, `price`, `supplier_id`, `image`, `descrip
 CREATE TABLE `transaction` (
   `id` int(11) NOT NULL,
   `hotel_id` int(11) NOT NULL,
-  `supplier_id` int(11) NOT NULL,
   `total_amount` double NOT NULL,
   `status` text NOT NULL,
   `date` date NOT NULL
@@ -137,7 +139,8 @@ CREATE TABLE `user_hotel` (
 
 INSERT INTO `user_hotel` (`id`, `email`, `password`, `nama_hotel`, `alamat_hotel`, `no_telp`) VALUES
 (1, 'hotel1@gmail.com', 'hotel1', 'POP! Hotel Gubeng', 'Jl. Bangka 8-18, Gubeng, Surabaya', '0812548321'),
-(2, 'hotel2@gmail.com', 'hotel2', 'Red Planet Surabaya', 'Jl. Arjuna No.64-66, Surabaya, Indonesia', '012548216547');
+(2, 'hotel2@gmail.com', 'hotel2', 'Red Planet Surabaya', 'Jl. Arjuna No.64-66, Surabaya, Indonesia', '012548216547'),
+(3, 'testhotel@test.com', 'test', 'testname', 'testaddr', '123456789');
 
 -- --------------------------------------------------------
 
@@ -160,7 +163,8 @@ CREATE TABLE `user_supplier` (
 
 INSERT INTO `user_supplier` (`id`, `email`, `password`, `nama_supplier`, `alamat_supplier`, `no_telp`) VALUES
 (1, 'supplier1@gmail.com', 'supplier1', 'Sukses Sejati Amenities', 'Perum Bohar Permai No B1, Kabupaten Sidoarjo, Jawa Timur', '081235860001'),
-(2, 'supplier2@gmail.com', 'supplier2', 'Sumber Lautan Abadi', 'Jl. Raya Darmo Baru Barat No.75, Sonokwijenan, Kec. Sukomanunggal, Kota SBY, Jawa Timur', '0317326773');
+(2, 'supplier2@gmail.com', 'supplier2', 'Sumber Lautan Abadi', 'Jl. Raya Darmo Baru Barat No.75, Sonokwijenan, Kec. Sukomanunggal, Kota SBY, Jawa Timur', '0317326773'),
+(3, 'test@test.com', 'test', 'testname', 'testaddr', '89606072909');
 
 --
 -- Indexes for dumped tables
@@ -231,7 +235,7 @@ ALTER TABLE `detail_transaction`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `transaction`
 --
@@ -241,12 +245,12 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `user_hotel`
 --
 ALTER TABLE `user_hotel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user_supplier`
 --
 ALTER TABLE `user_supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

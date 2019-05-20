@@ -11,6 +11,11 @@
 	$featured = $_POST['productFeatured'];
 	$isImagePresent= $_POST['changeProductImage'];
 	
+	$sql2 = "SELECT * FROM user_supplier WHERE id=".$supplier;
+	$supplierArray = $conn->query($sql2);
+	while($supplierName = mysqli_fetch_assoc($supplierArray)) :
+		$current_name = $supplierName['nama_supplier'];
+	endwhile;
 
 	if($isImagePresent==0){
 
@@ -35,7 +40,7 @@
 		
 		$target_dir = "../images/";
 		$target_dirDB = "./images/";
-		$newfilename = "product_".$title."_".$supplier.".jpg";
+		$newfilename = "product_".$title."_".$current_name.".jpg";
 		$targetfile = $target_dir.$newfilename;
 		$targetfileDB = $target_dirDB.$newfilename;
 		$realfile = $target_dir.basename($_FILES["productImage"]["name"]);

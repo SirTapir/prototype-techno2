@@ -54,7 +54,7 @@
 				$sql = "SELECT * FROM user_supplier";
 				$result = $conn->query($sql);
 				while($productBrand = mysqli_fetch_assoc($result)) :
-				if ($productBrand['id']==$product['nama_supplier']) {
+				if ($productBrand['id']==$product['supplier_id']) {
 					echo "<option value='".$productBrand['id']."' selected>".$productBrand['nama_supplier']."</option>";
 				}else{
 					echo "<option value='".$productBrand['id']."'>".$productBrand['nama_supplier']."</option>";
@@ -81,7 +81,7 @@
 
 	    <div class="form-group">
 	      <label for="description">Product Description:</label>
-	      <textarea class="form-control" rows="5" name="productDesc" required> <?=$product['description']; ?> </textarea>
+	      <textarea class="form-control" rows="5" name="productDesc" required> <?=$product['description']; ?></textarea>
 	    </div>
 
 	    <div class="checkbox-inline">

@@ -2,7 +2,7 @@
 <?php
 	require "connect.php";
 	include "header.php";
-
+	$id_row=0;
 	if(!isset($_SESSION["user-supplier"])){ //if login in session is not set
     	header("Location: ../login.php");
 	}
@@ -45,7 +45,7 @@
 		<tbody>
 			<?php
 			#SQL get products
-			$query = "SELECT * FROM products WHERE supplier_id=".$_SESSION["user-supplier"];;
+			$query = "SELECT * FROM products WHERE supplier_id=".$_SESSION["user-supplier"];
 			$q = mysqli_query($conn,$query) or die (mysql_error($conn));
 
 
@@ -54,6 +54,7 @@
 			while($row = mysqli_fetch_assoc($q))
 			{
 				$id = $row["id"];
+				$id_row++;
 				$title = $row["title"];
 				$price = $row["price"];
 				$desc = $row["description"];
@@ -63,7 +64,7 @@
 				
 				
 				echo"<tr>";
-					echo "<td>$id</td>";
+					echo "<td>$id_row</td>";
 					echo "<td>$title</td>";
 					echo "<td>$price</td>";
 					
