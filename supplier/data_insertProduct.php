@@ -1,17 +1,23 @@
 <?php
+	session_start();
 	require 'connect.php';
 	$title = $_POST['productName'];
 	$price = $_POST['productPrice'];
-	$brand = $_POST['productBrand'];
+	$brand = $_SESSION['user-supplier'];
 	#$image = $_POST['productName'];
 	$desc = $_POST['productDesc'];
-	$featured = $_POST['productFeatured'];
-	$colors = $_POST['productColors'];
+	#$featured = $_POST['productFeatured'];
+
+	$sql2 = "SELECT * FROM user_supplier WHERE id=".$_SESSION["user-supplier"];
+	$supplierArray = $conn->query($sql2);
+	while($supplierName = mysqli_fetch_assoc($supplierArray)) :
+		$current_name = $supplierName['nama_supplier'];
+	endwhile;
 
 
 	$target_dir = "../images/";
 	$target_dirDB = "./images/";
-	$newfilename = "product_".$title."_".$brand.".jpg";
+	$newfilename = "product_".$title."_".$current_name.".jpg";
 	$targetfile = $target_dir.$newfilename;
 	$targetfileDB = $target_dirDB.$newfilename;
 	$realfile = $target_dir.basename($_FILES["productImage"]["name"]);
@@ -28,7 +34,7 @@
     echo "Sorry, your file was not uploaded.";
 	// if everything is ok, try to upload file
 	} else {
-		$sql = "INSERT INTO products VALUES (0, '$title', $price,$brand,'$targetfileDB','$desc',$featured,'$colors')";
+		$sql = "INSERT INTO products VALUES (0, '$title', $price,$brand,'$targetfileDB','$desc', 0)";
 		echo $sql;
     	if (move_uploaded_file($_FILES["productImage"]["tmp_name"], $targetfile) && mysqli_query($conn, $sql)){
 		    header('location: insertProduct.php?error=no');

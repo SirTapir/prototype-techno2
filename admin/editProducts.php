@@ -81,7 +81,7 @@
 
 	    <div class="form-group">
 	      <label for="description">Product Description:</label>
-	      <textarea class="form-control" rows="5" name="productDesc" required> <?=$product['description']; ?> </textarea>
+	      <textarea class="form-control" rows="5" name="productDesc" required> <?=$product['description']; ?></textarea>
 	    </div>
 
 	    <div class="checkbox-inline">
