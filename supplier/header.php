@@ -49,7 +49,7 @@ if(!isset($_SESSION)){
       {
         echo '<ul class="navbar-nav ml-auto">
           <li class="nav-item ">
-            <a href="login.php" class="nav-link" style="color: #000000">Log In</a>
+            <a href="../login.php" class="nav-link" style="color: #000000">Log In</a>
           </li>
         </ul>';
       } 
