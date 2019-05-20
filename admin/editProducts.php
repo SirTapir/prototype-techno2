@@ -54,7 +54,7 @@
 				$sql = "SELECT * FROM user_supplier";
 				$result = $conn->query($sql);
 				while($productBrand = mysqli_fetch_assoc($result)) :
-				if ($productBrand['id']==$product['nama_supplier']) {
+				if ($productBrand['id']==$product['supplier_id']) {
 					echo "<option value='".$productBrand['id']."' selected>".$productBrand['nama_supplier']."</option>";
 				}else{
 					echo "<option value='".$productBrand['id']."'>".$productBrand['nama_supplier']."</option>";
