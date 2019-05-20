@@ -10,7 +10,7 @@
 	$desc = $_POST['productDesc'];
 	$featured = $_POST['productFeatured'];
 	$isImagePresent= $_POST['changeProductImage'];
-	$colors = $_POST['productColors'];
+	
 
 	if($isImagePresent==0){
 
@@ -22,7 +22,7 @@
 		
 		$targetfileDB = $data[0]['image'];
 		
-		$sql = "UPDATE products SET title='$title', price='$price', supplier_id='$supplier', description='$desc', featured='$featured', color='$colors', image='$targetfileDB' WHERE id=$id";
+		$sql = "UPDATE products SET title='$title', price='$price', supplier_id='$supplier', description='$desc', featured='$featured', image='$targetfileDB' WHERE id=$id";
 		if (mysqli_query($conn, $sql)) {
 			echo "Record updated successfully";
 			header('location: editProducts.php?error=no&id='.$id);
@@ -53,7 +53,7 @@
 		// if everything is ok, try to upload file
 		} else {
 			$idEditProducts=$_SESSION['idEditProducts'];
-			$sql = "UPDATE products SET title='$title', price='$price', supplier_id='$supplier', description='$desc', featured='$featured', color='$colors', image='$targetfileDB' WHERE id=$idEditProducts";
+			$sql = "UPDATE products SET title='$title', price='$price', supplier_id='$supplier', description='$desc', featured='$featured', image='$targetfileDB' WHERE id=$idEditProducts";
 			
 	    	if (move_uploaded_file($_FILES["productImage"]["tmp_name"], $targetfile)){
 	    		if (mysqli_query($conn, $sql)) {

@@ -6,7 +6,7 @@
 	#$image = $_POST['productName'];
 	$desc = $_POST['productDesc'];
 	$featured = $_POST['productFeatured'];
-	$colors = $_POST['productColors'];
+	
 
 
 	$target_dir = "../images/";
@@ -28,7 +28,7 @@
     echo "Sorry, your file was not uploaded.";
 	// if everything is ok, try to upload file
 	} else {
-		$sql = "INSERT INTO products VALUES (0, '$title', $price,$brand,'$targetfileDB','$desc',$featured,'$colors')";
+		$sql = "INSERT INTO products VALUES (0, '$title', $price,$brand,'$targetfileDB','$desc',$featured)";
 		echo $sql;
     	if (move_uploaded_file($_FILES["productImage"]["tmp_name"], $targetfile) && mysqli_query($conn, $sql)){
 		    header('location: insertProduct.php?error=no');

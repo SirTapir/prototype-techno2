@@ -26,7 +26,7 @@
 				<th scope="col">Supplier</th>
 				<th scope="col">Description</th>
 				<th scope="col">Feature</th>
-				<th scope="col">Color</th>
+				
 				<th scope="col">Image</th>
 				<th scope="col">Edit</th>
 				<th scope="col">Delete</th>
@@ -49,7 +49,7 @@
 				$supplier_id = $row["supplier_id"];
 				$desc = $row["description"];
 				$featured = $row["featured"];
-				$color = $row["color"];
+				
 				$img =$row["image"];
 				$imgShow = ".".$img;
 
@@ -71,7 +71,7 @@
 					endwhile;
 					echo "<td>$desc</td>";
 					echo "<td>$featured</td>";
-					echo "<td>$color</td>";
+					
 					echo "<td><a href = '$imgShow'>Click here</a></td>";
 					echo "<td><a href='editProducts.php?id=$id' style='color: black;'><button type='button' class='btn btn-warning'><i class='fa fa-cog'></i></button></a></td>";
 					echo "<td><button type='button' class='btn btn-danger' onclick='deleteItem($id)'><i class='fa fa-close'></i></button></td>";

@@ -112,10 +112,7 @@
 	      
 	    </div>
 
-	    <div class="form-group">
-	      <label for="colors">Colors:</label>
-	      <input type="text" class="form-control"  placeholder="Use comma as separator (no spaces) ex:red,green,blue" name="productColors" value="<?=$product['color']; ?>" required>
-	    </div>
+	    
 
 	    <input type="hidden" id="productID" name="productID" value="<?=$product['id']; ?>">
 

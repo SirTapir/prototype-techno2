@@ -137,30 +137,7 @@
 				
 			});
 				
-			function addtoCart(id_product,quantity_product,color_product) {
-					
-					if(!quantity_product=="" && !color_product==""){
-						
-						$.ajax({
-
-					            type: "POST",
-					            url: "pass_value.php",
-					            data: {
-					            	id: id_product,
-					            	quantity_product: quantity_product,
-					            	color_product: color_product
-					            },
-					            dataType: 'json',
-					            cache: false,
-					            success: function(response) {
-
-					                    alert(response.message);
-
-					            }
-
-						});			
-					}	
-			}
+			
 
 			function deleteArray(index_array) {
 				$.ajax({
