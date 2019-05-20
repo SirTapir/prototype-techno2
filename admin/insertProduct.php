@@ -5,6 +5,7 @@
 		$error=$_GET['error'];
 		if($error=='no'){
 			echo "<script> alert('Success!') </script>";
+      header("Location: viewProduct.php");
 		}else{
 			echo "<script> alert('Sorry, there was an error uploading your file.') </script>";
 		}
@@ -62,10 +63,7 @@
       <label><input type="radio" value="0" name="productFeatured" checked>No</label>
     </div>
 
-    <div class="form-group">
-      <label for="colors">Colors:</label>
-      <input type="text" class="form-control"  placeholder="Use comma as separator (no spaces) ex:red,green,blue" name="productColors" required>
-    </div>
+    
 
     <button type="submit" class="btn btn-default">Submit</button>
   </form>

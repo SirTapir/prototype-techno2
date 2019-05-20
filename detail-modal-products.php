@@ -39,6 +39,7 @@
 												<input type="text" class="form-control" id="quantity-<?=$product['id']; ?>" name="quantity" style="margin-left: -15px;">
 											</div><br><br><br>
 											-->
+											<!--
 											<div class="form-group">
 												<label for="LED Color">Color</label>
 												<select name="ledColor" id="ledColor-<?=$product['id']; ?>" class="form-control">
@@ -52,6 +53,7 @@
 													
 												</select>
 											</div>
+											-->
 										</div>
 									</form>
 								</div>

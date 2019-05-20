@@ -5,6 +5,15 @@
 	$sql = "SELECT * FROM products WHERE featured=1";
 	$result = $conn->query($sql);
 	$result2 = $conn->query($sql);
+
+	if(isset($_GET['signupErr'])){
+		$signup=$_GET['signupErr'];
+		if($signup=='no'){
+			echo "<div class = 'alert alert-warning' role = 'alert'>Sign Up Sucess!</div>";
+		}else{
+			echo "<div class = 'alert alert-warning' role = 'alert'>Sign Up Failed!</div>";
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -137,30 +146,7 @@
 				
 			});
 				
-			function addtoCart(id_product,quantity_product,color_product) {
-					
-					if(!quantity_product=="" && !color_product==""){
-						
-						$.ajax({
-
-					            type: "POST",
-					            url: "pass_value.php",
-					            data: {
-					            	id: id_product,
-					            	quantity_product: quantity_product,
-					            	color_product: color_product
-					            },
-					            dataType: 'json',
-					            cache: false,
-					            success: function(response) {
-
-					                    alert(response.message);
-
-					            }
-
-						});			
-					}	
-			}
+			
 
 			function deleteArray(index_array) {
 				$.ajax({

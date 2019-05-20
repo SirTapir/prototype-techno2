@@ -6,8 +6,9 @@
 
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    
     <style>
 
     .wrapper {
@@ -86,26 +87,30 @@
             <div class="row wrapper">
                 <div class="col-md-6 login-form-1">
                     <h3>Sign Up</h3>
-                    <form>
-                    	<div class="form-group">
+                    <form action="data_signup.php" method="post">
+                    	<div class="form-group" >
                     		<h4>Company Type</h4>
-                    		<input type="radio" name="type" value="supplier"> Supplier<br>
+                    		<input type="radio" name="type" value="supplier" required> Supplier<br>
 							<input type="radio" name="type" value="hotel"> Hotel<br>
                     	</div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Email" value="" />
+                            <input type="email" name="email" class="form-control" placeholder="Your Email" value="" required/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Your Password" value="" />
+                            <input type="password" name="password" class="form-control" placeholder="Your Password" value="" required/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Company Name" value="" />
+                            <input type="text" name="companyName" class="form-control" placeholder="Your Company Name" value="" required/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Your Company Address" value="" />
+                            <input type="text" name="companyAddr" class="form-control" placeholder="Your Company Address" value="" required/>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btnSubmit" value="Login" />
+                            <input type="tel" id="phone" name="phone" class="form-control" pattern="[0-9]+" placeholder="Your Company Phone Number" required>
+                            
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit" value="Register" />
                         </div>
                     </form>
                 </div>

@@ -48,16 +48,16 @@
 	    </div>
 
 	    <div class="form-group">
-		  <label for="sel1">Product Brand</label>
-		  <select class="form-control" id="sel1" name="productBrand">
+		  <label for="sel1">Product Supplier</label>
+		  <select class="form-control" id="sel1" name="productSupplier">
 		    <?php
-				$sql = "SELECT * FROM brands";
+				$sql = "SELECT * FROM user_supplier";
 				$result = $conn->query($sql);
 				while($productBrand = mysqli_fetch_assoc($result)) :
-				if ($productBrand['id']==$product['brand']) {
-					echo "<option value='".$productBrand['id']."' selected>".$productBrand['brand']."</option>";
+				if ($productBrand['id']==$product['nama_supplier']) {
+					echo "<option value='".$productBrand['id']."' selected>".$productBrand['nama_supplier']."</option>";
 				}else{
-					echo "<option value='".$productBrand['id']."'>".$productBrand['brand']."</option>";
+					echo "<option value='".$productBrand['id']."'>".$productBrand['nama_supplier']."</option>";
 
 				}									
 				
@@ -67,9 +67,16 @@
 		  </select>
 		</div>
 
+
+
 	    <div class="form-group">
-	      <label for="Image">Product Image:</label>
-	      <input type="file" class="form-control"  name="productImage"  required>
+	      <label for="Image">Edit Product Image?</label>
+	      <label><input type="radio" value="1" name='changeProductImage' onclick="enableFileInsert()">Yes</label>
+	      <label><input type="radio" value="0" name='changeProductImage' onclick="disableFileInsert()" checked>No</label>
+
+	      <div id="fileInsert">
+	      
+	  	  </div>
 	    </div>
 
 	    <div class="form-group">
@@ -105,10 +112,7 @@
 	      
 	    </div>
 
-	    <div class="form-group">
-	      <label for="colors">Colors:</label>
-	      <input type="text" class="form-control"  placeholder="Use comma as separator (no spaces) ex:red,green,blue" name="productColors" value="<?=$product['color']; ?>" required>
-	    </div>
+	    
 
 	    <input type="hidden" id="productID" name="productID" value="<?=$product['id']; ?>">
 
@@ -116,6 +120,15 @@
 	  </form>
 	<?php endwhile; ?>
 </div>
+
+<script>
+	function enableFileInsert() {
+		document.getElementById("fileInsert").innerHTML='<label for="Image">Product Image:</label><input type="file" class="form-control"  name="productImage"  required>';
+	}
+	function disableFileInsert() {
+		document.getElementById("fileInsert").innerHTML='';
+	}	
+</script>
 
 <!--	Blank space		--> 
 	<div class="col-md-10" style="margin: 100px;">
