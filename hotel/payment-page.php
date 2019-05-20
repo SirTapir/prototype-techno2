@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	include 'connect.php';
-	
 ?>
 
 <!DOCTYPE html>
@@ -42,10 +41,11 @@
 						Quantity
 					</div>
 					<div class='col-sm-2'>
-						Notes
+						Subtotal
 					</div>
 				</div>";
 				$counter =0;
+				$total=0;
 		foreach($_SESSION['cart_id'] as $productID){
 			$sql_getName="SELECT title, image FROM products WHERE id=$productID";
 			$counter++;
@@ -56,12 +56,14 @@
 						<div class='col-sm-3'><img src='".$name['image']."' style='margin:auto; width:50px; height:auto;'/></div>
 						<div class='col-sm-4'>".$name['title']."</div>
 						<div class='col-sm-2'>".$_SESSION['cart_quantity'][$index]."</div>
-						<div class='col-sm-2'>".$_SESSION['cart_color'][$index]."</div>
+						<div class='col-sm-2'>Rp".$_SESSION['cart_price'][$index]."</div>
 					</div>";
+			$total+=(int)$_SESSION['cart_price'][$index];
 			$index++;
-		}		
+		}	
 		echo "</table>";
 
+		$_SESSION['total_amount'] = $total;
 	?>
 	<br>
 	<br>
@@ -69,8 +71,8 @@
 		<div class="col-sm-8"></div>
 
 		<div class="col-sm-4">
-		Subtotal:
-		<p id="total"></p>
+		Total:
+		<p id="total"><?php echo 'Rp'.$total ?></p>
 		</div>
 	</div>
 	<br>
@@ -83,7 +85,7 @@
 	</div>
 
 	<div class='row'>
-		<form action="destroy.php">
+		<form action="savePaymentDetail.php" method="post">
 			<div class='col-sm-1'><input type="radio" name="payment-type" value="paypal" id="paypal">
 				<label for="paypal"><i class="fa fa-cc-paypal" style="font-size: 24px;"></i></label>
 			</div>
@@ -103,5 +105,15 @@
 			<div class="col-sm-3"><button class="btn btn-success" type='submit'>SUBMIT</button></div>
 		</form>
 	</div>
+
+	<script>
+		function countTotal(){
+			var total = 0;
+			var i = 0;
+			for(i=0;i<$counter){
+
+			}
+		}
+	</script>
 </body>
 </html>

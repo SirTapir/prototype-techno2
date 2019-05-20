@@ -25,7 +25,7 @@
 						Quantity
 					</div>
 					<div class="col-sm-2">
-						Notes
+						Subtotal
 					</div>
 				</div>
 				<?php
@@ -46,7 +46,7 @@
 											<div class='col-sm-3'><img src='.".$name['image']."' style='margin:auto; height:auto; width:135px;'/></div>
 											<div class='col-sm-4' style='padding-top:30px;'>".$name['title']."</div>
 											<div class='col-sm-2' style='padding-top:30px;'>".$_SESSION['cart_quantity'][$index]."</div>
-											<div class='col-sm-2' style='padding-top:30px;'>".$_SESSION['cart_color'][$index]."</div>
+											<div class='col-sm-2' style='padding-top:30px;'>Rp".$_SESSION['cart_price'][$index]."</div>
 										</div>";
 								$index++;
 

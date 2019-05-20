@@ -37,26 +37,13 @@
 
 												<input type="text" class="form-control" id="quantity-<?=$product['id']; ?>" name="quantity" style="margin-left: -15px;">
 											</div><br><br><br>
-											<div class="form-group">
-												<label for="LED Color">Color</label>
-												<select name="ledColor" id="ledColor-<?=$product['id']; ?>" class="form-control">
-													<option value=""></option>
-													<?php
-														$color=explode(',', $product['color']);
-														foreach ($color as $eachColor) {
-															echo "<option value=' ".$eachColor."'>".$eachColor."</option>";
-														}
-													?>
-													
-												</select>
-											</div>
 										</div>
 									</form>
 								</div>
 							</div>
 							<div class="modal-footer">
 								<button class="btn btn-default" data-dismiss="modal">Close</button>
-								<button class="btn btn-warning" type="submit" onclick="addtoCart(<?=$product['id']; ?>,document.getElementById('quantity-<?=$product['id']; ?>').value,document.getElementById('ledColor-<?=$product['id']; ?>').value)"> <span class='glyphicon glyphicon-shopping-cart'>Add To Cart</span></button>
+								<button class="btn btn-warning" type="submit" onclick="addtoCart(<?=$product['id']; ?>,document.getElementById('quantity-<?=$product['id']; ?>').value,<?=$product['price']; ?>)"> <span class='glyphicon glyphicon-shopping-cart'>Add To Cart</span></button>
 							</div>
 						</div>
 						

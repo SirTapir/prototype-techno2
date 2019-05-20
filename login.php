@@ -14,16 +14,16 @@ if($_POST){
         $pass = $_POST['password'];
         
         if($_POST['type'] == "hotel"){
-            $_SESSION['user-hotel'] = $email;
             $query = "SELECT * from user_hotel where email = '$email' and password = '$pass'";
             $q = mysqli_query($conn,$query) or die (mysqli_error($conn));
-            $res = mysqli_num_rows($q);
+            $res = mysqli_fetch_assoc($q);
+            $_SESSION['user-hotel'] = $res['id'];
         }
         else if($_POST['type'] == "supplier"){
-            $_SESSION['user-supplier'] = $email;
             $query = "SELECT * from user_supplier where email = '$email' and password = '$pass'";
             $q = mysqli_query($conn,$query) or die (mysqli_error($conn));
-            $res = mysqli_num_rows($q);
+            $res = mysqli_fetch_assoc($q);
+            $_SESSION['user-supplier'] = $res['id'];
         }
 
         if($res!=0 && isset($_SESSION['user-hotel'])){
