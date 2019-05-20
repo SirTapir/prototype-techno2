@@ -5,6 +5,15 @@
 	$sql = "SELECT * FROM products WHERE featured=1";
 	$result = $conn->query($sql);
 	$result2 = $conn->query($sql);
+
+	if(isset($_GET['signupErr'])){
+		$signup=$_GET['signupErr'];
+		if($signup=='no'){
+			echo "<div class = 'alert alert-warning' role = 'alert'>Sign Up Sucess!</div>";
+		}else{
+			echo "<div class = 'alert alert-warning' role = 'alert'>Sign Up Failed!</div>";
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html>
