@@ -5,6 +5,7 @@
 		$error=$_GET['error'];
 		if($error=='no'){
 			echo "<script> alert('Success!') </script>";
+      header("Location: viewProduct.php");
 		}else{
 			echo "<script> alert('Sorry, there was an error uploading your file.') </script>";
 		}
