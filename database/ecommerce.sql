@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2019 at 02:48 PM
+-- Generation Time: May 19, 2019 at 04:43 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -83,7 +83,7 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `price` int(11) NOT NULL,
-  `brand` int(11) NOT NULL,
+  `supplier_id` int(11) NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `featured` tinyint(1) NOT NULL,
@@ -94,10 +94,10 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `title`, `price`, `brand`, `image`, `description`, `featured`, `color`) VALUES
+INSERT INTO `products` (`id`, `title`, `price`, `supplier_id`, `image`, `description`, `featured`, `color`) VALUES
 (1, 'Generic Keyboard', 1500000, 1, './images/product1.png', 'The brand new generic Keyboard ready to be used by you!', 1, 'Red,Green,Blue'),
 (2, 'Generic Mouse', 150000, 2, './images/product2.png', 'Brand new generic Mouse', 1, 'Yellow,Blue,Green'),
-(3, 'Microsoft Cap', 35000, 3, './images/product_Microsoft Cap_3.jpg', 'Brand new hat from microsoft', 1, 'Red,White,Blue,Green,Yellow'),
+(3, 'Microsoft Cap', 35000, 1, './images/product_Microsoft Cap_3.jpg', 'Brand new hat from microsoft', 1, 'Red,White,Blue,Green,Yellow'),
 (4, 'Mechanical Keyboard', 1000000, 2, './images/product_Mechanical Keyboard_2.jpg', 'Advanced mechanical keyboard', 1, 'Red,Yellow,Green,Rainbow'),
 (5, 'Razer Laptop', 175000, 2, './images/product_Razer Laptop_2.jpg', 'Oldie but goodie from Razer (not really)', 0, 'Gray');
 
@@ -231,7 +231,7 @@ ALTER TABLE `detail_transaction`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `transaction`
 --
