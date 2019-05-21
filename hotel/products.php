@@ -54,7 +54,7 @@
 			<?php while($product = mysqli_fetch_assoc($result)) : ?>
 			<div class="col-md-3">
 				<h4><?=$product['title']; ?></h4>
-				<img src="<?=$product['image']; ?>" alt="<?=$product['title']; ?>" id="images">
+				<img src=".<?=$product['image']; ?>" alt="<?=$product['title']; ?>" id="images">
 				<p class="price">Price: Rp<?=$product['price']; ?></p>
 				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#details-<?=$product['id']; ?>">Details</button>
 			</div>
