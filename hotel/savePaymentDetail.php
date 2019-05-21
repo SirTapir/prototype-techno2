@@ -19,4 +19,13 @@ for($i = 0; $i < $_SESSION['transaction_count']; $i++){
 	$res = mysqli_query($conn, $sql);
 }
 
+//hapus semua $_SESSION 
+//redirect
+$_SESSION['cart']='empty';
+$_SESSION['cart_id']=array();
+$_SESSION['cart_quantity']=array();
+$_SESSION['cart_price']=array();
+
+header('Location:index.php');
+
 ?>
