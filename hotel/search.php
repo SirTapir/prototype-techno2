@@ -1,12 +1,14 @@
 
 <?php
 	session_start();
+	if(!isset($_SESSION["user-hotel"])){ //if login in session is not set
+    	header("Location: ../login.php");
+	}
 	if(!isset($_SESSION['cart'])){
 		$_SESSION['cart']='empty';
 		$_SESSION['cart_id']=array();
 		$_SESSION['cart_quantity']=array();
-		$_SESSION['cart_color']=array();
-		
+		$_SESSION['cart_price']=array();
 	}
 	require_once "connect.php";
 	$searchQuery = $_GET['searchProducts'];
@@ -99,10 +101,12 @@
 				
 			});
 				
-			function addtoCart(id_product,quantity_product,color_product) {
+			function addtoCart(id_product,quantity_product,price_product) {
 					
-					if(!quantity_product=="" && !color_product==""){
+					if(!quantity_product==""){
 						
+						var subtotal = parseInt(price_product) * parseInt(quantity_product);
+
 						$.ajax({
 
 					            type: "POST",
@@ -110,7 +114,7 @@
 					            data: {
 					            	id: id_product,
 					            	quantity_product: quantity_product,
-					            	color_product: color_product
+					            	price_product: subtotal
 					            },
 					            dataType: 'json',
 					            cache: false,

@@ -8,7 +8,6 @@
 		$_SESSION['cart']='empty';
 		$_SESSION['cart_id']=array();
 		$_SESSION['cart_quantity']=array();
-		$_SESSION['cart_color']=array();
 		$_SESSION['cart_price']=array();
 	}
 	require_once "connect.php";
