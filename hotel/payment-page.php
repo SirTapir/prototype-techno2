@@ -111,7 +111,7 @@
 		function countTotal(){
 			var total = 0;
 			var i = 0;
-			for(i=0;i<$counter){
+			for(i=0;i<$counter;i++){
 
 			}
 		}
