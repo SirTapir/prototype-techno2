@@ -78,15 +78,15 @@
 	</div>
 	<br>
 	<div class='row'>
-		<div class='col-sm-2'> Payment method: </div>
+		<div class='col-sm-2'>Payment method: </div>
 		<div class='col-sm-1'> </div>
-		<div class='col-sm-4'>Shipping method: </div>
-		<div class='col-sm-2'></div>
+		<div class='col-sm-2'>Shipping method: </div>
+		<div class='col-sm-3'>Hotel Logo:</div>
 		<div class='col-sm-3'></div>
 	</div>
 
 	<div class='row'>
-		<form action="savePaymentDetail.php" method="post">
+		<form action="savePaymentDetail.php" method="post" enctype="multipart/form-data">
 			<div class='col-sm-1'><input type="radio" name="payment-type" value="paypal" id="paypal">
 				<label for="paypal"><i class="fa fa-cc-paypal" style="font-size: 24px;"></i></label>
 			</div>
@@ -94,7 +94,7 @@
 				<input type="radio" name="payment-type" value="mastercard"><i class="fa fa-cc-mastercard" style="font-size: 24px;"></i>
 			</div>
 			<div class="col-sm-1"></div>
-			<div class="col-sm-4">
+			<div class="col-sm-2">
 				<select style='width: 100px;'>
 					<option class="active">JNE </option>
 					<option> TIKI</option>
@@ -102,7 +102,7 @@
 					<option> Wahana</option>
 				</select>
 			</div>
-			<div class="col-sm-2"></div>
+			<div class="col-sm-3"><input type="file" name="productImage" required></div>
 			<div class="col-sm-3"><button class="btn btn-success" type='submit'>SUBMIT</button></div>
 		</form>
 	</div>

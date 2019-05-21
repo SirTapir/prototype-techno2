@@ -14,8 +14,8 @@
 	endwhile;
 
 
-	$target_dir = "../images/";
-	$target_dirDB = "./images/";
+	$target_dir = "../transaction/";
+	$target_dirDB = "./transaction/";
 	$newfilename = "product_".$title."_".$current_name.".jpg";
 	$targetfile = $target_dir.$newfilename;
 	$targetfileDB = $target_dirDB.$newfilename;
