@@ -36,7 +36,7 @@
 	<link rel="stylesheet" href="css/main.css">
 
 	<!-- To make sure page is not broken on mobile phone !-->
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scaleable=no">
 
 </head>
 <body id="page-top" style="background-color: white;">
