@@ -1,14 +1,14 @@
 <?php
 session_start();
 include 'connect.php';
-/*
+
 $sql = "INSERT INTO transaction VALUES(default, ".$_SESSION['user-hotel'].", ".$_SESSION['total_amount'].", 'pending', now())";
 $res = mysqli_query($conn, $sql);
 
 $sql = "SELECT id FROM transaction ORDER BY id DESC LIMIT 1";
 $res = mysqli_query($conn, $sql);
 $transaction_id = mysqli_fetch_assoc($res);
-*/
+
 	
 $date_array = getdate();
 $date=$date_array['year']."-".$date_array['mon']."-".$date_array['mday'];
