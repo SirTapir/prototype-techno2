@@ -68,9 +68,9 @@ if(!isset($_SESSION)){
         </ul>';
         echo '<ul class="navbar-nav ml-auto">';
         echo '
-          <li class="nav-item ">
-            <a href="logout.php" class="nav-link" style="color: #000000">Log Out</a>
-          </li>';
+
+            <a href="history-supplier.php" class="nav-link" style="color: #000000">History</a>
+            <a href="logout.php" class="nav-link" style="color: #000000">Log Out</a>';
        echo '</ul>';
       }
     ?>
