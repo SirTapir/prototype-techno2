@@ -67,7 +67,7 @@
 					echo "<td>".$hotel['nama_hotel']."</td>";
 					echo "<td>".$row['qty']."</td>";
 					echo "<td>".$row['status']."</td>";
-					echo "<td>".$row['logo']."</td></tr>";
+					echo "<td> <a href='.".$row['logo']."'> Click Here </a> </td></tr>";
 			}
 			?>
 	</table>
