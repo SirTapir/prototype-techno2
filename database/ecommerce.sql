@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2019 at 04:47 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- Generation Time: Jun 10, 2019 at 04:23 PM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -73,8 +75,17 @@ CREATE TABLE `detail_transaction` (
   `supplier_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
   `subtotal` double NOT NULL,
-  `status` text NOT NULL
+  `status` text NOT NULL,
+  `logo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detail_transaction`
+--
+
+INSERT INTO `detail_transaction` (`id`, `transaction_id`, `product_id`, `hotel_id`, `supplier_id`, `qty`, `subtotal`, `status`, `logo`) VALUES
+(1, 1, 1, 1, 1, 5, 7500000, 'pending', './transaction/transaction_1_2019-6-10.jpg'),
+(2, 1, 3, 1, 1, 2, 70000, 'pending', './transaction/transaction_1_2019-6-10.jpg');
 
 -- --------------------------------------------------------
 
@@ -97,12 +108,13 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `title`, `price`, `supplier_id`, `image`, `description`, `featured`) VALUES
-(1, 'Generic Keyboard', 1500000, 1, './images/product_Generic Keyboard_1.jpg', 'The brand new generic Keyboard ready to be used by you! ', 1),
-(2, 'Generic Mouse', 150000, 2, './images/product2.png', 'Brand new generic Mouse', 1),
-(3, 'Microsoft Cap', 35000, 1, './images/product_Microsoft Cap_3.jpg', 'Brand new hat from microsoft', 1),
-(4, 'Mechanical Keyboard', 1000000, 2, './images/product_Mechanical Keyboard_2.jpg', 'Advanced mechanical keyboard', 1),
-(5, 'Razer Laptop', 175000, 2, './images/product_Razer Laptop_2.jpg', 'Oldie but goodie from Razer (not really)', 0),
-(9, 'TestingProductBaru', 12345, 1, './images/product_TestingProductBaru_Sukses Sejati Amenities.jpg', 'test', 0);
+(1, 'Sabun Batang', 1500000, 1, './images/sabunbatang.jpg', 'sabun batang', 1),
+(2, 'Handuk', 150000, 2, './images/handuk.jpg', 'handuk', 1),
+(3, 'Shower Cap', 35000, 1, './images/showercap.jpg', 'shower cap', 1),
+(4, 'Sandal Hotel', 1000000, 2, './images/sandalhotel.jpg', 'sandal hotel', 1),
+(5, 'Sikat Gigi', 175000, 2, './images/sikatgigi.jpg', 'sikat gigi', 0),
+(10, 'Pasta Gigi', 12345, 1, './images/pastagigi.jpg', 'pasta gigi', 0),
+(11, 'Shampoo', 1234567, 3, './images/shampoo.jpg', 'shampoo', 0);
 
 -- --------------------------------------------------------
 
@@ -117,6 +129,13 @@ CREATE TABLE `transaction` (
   `status` text NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaction`
+--
+
+INSERT INTO `transaction` (`id`, `hotel_id`, `total_amount`, `status`, `date`) VALUES
+(1, 1, 7570000, 'pending', '2019-06-10');
 
 -- --------------------------------------------------------
 
@@ -221,36 +240,44 @@ ALTER TABLE `user_supplier`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `detail_transaction`
 --
 ALTER TABLE `detail_transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `user_hotel`
 --
 ALTER TABLE `user_hotel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `user_supplier`
 --
 ALTER TABLE `user_supplier`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

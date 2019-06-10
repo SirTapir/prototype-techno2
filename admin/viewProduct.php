@@ -7,7 +7,6 @@
 	}
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,81 +15,61 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
 <body>
-	<h1 style="margin-left:600px;margin-top: 25px;">Data Product</h1>
+	<h1 style="margin-left:600px;margin-top: 25px;">Transactions</h1>
+	
 	<table class="table table-striped" style="margin-top: 25px;">
 		<thead>
 			<tr>
 				<th scope="col">Id</th>
-				<th scope="col">Title</th>
-				<th scope="col">Price</th>
-				<th scope="col">Supplier</th>
-				<th scope="col">Description</th>
-				<th scope="col">Feature</th>
-				
-				<th scope="col">Image</th>
-				<th scope="col">Edit</th>
-				<th scope="col">Delete</th>
+				<th scope="col">Details</th>
+				<th scope="col">Total</th>
+				<th scope="col">Status</th>
+				<th scope="col">Date</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php
-			#SQL get products
-			$query = "SELECT * FROM products";
+			
+			$query = "SELECT * FROM transaction";
 			$q = mysqli_query($conn,$query) or die (mysql_error($conn));
-
-
-
 
 			while($row = mysqli_fetch_assoc($q))
 			{
-				$id = $row["id"];
-				$title = $row["title"];
-				$price = $row["price"];
-				$supplier_id = $row["supplier_id"];
-				$desc = $row["description"];
-				$featured = $row["featured"];
-				
-				$img =$row["image"];
-				$imgShow = ".".$img;
-
-				#SQL get brands name
-				$sql2 = "SELECT * FROM user_supplier WHERE id=".$supplier_id;
-				$supplierArray = $conn->query($sql2);
-				
-
-			
-
 				echo"<tr>";
-					echo "<td>$id</td>";
-					echo "<td>$title</td>";
-					echo "<td>$price</td>";
-					
-					
-					while($supplierName = mysqli_fetch_assoc($supplierArray)) :
-							echo "<td>".$supplierName['nama_supplier']."</td>";
-					endwhile;
-					echo "<td>$desc</td>";
-					echo "<td>$featured</td>";
-					
-					echo "<td><a href = '$imgShow'>Click here</a></td>";
-					echo "<td><a href='editProducts.php?id=$id' style='color: black;'><button type='button' class='btn btn-warning'><i class='fa fa-cog'></i></button></a></td>";
-					echo "<td><button type='button' class='btn btn-danger' onclick='deleteItem($id)'><i class='fa fa-close'></i></button></td>";
+					echo "<td>".$row['id']."</td>";
+
+				$query = "SELECT * FROM detail_transaction WHERE transaction_id=".$row['id'];
+				$q2 = mysqli_query($conn, $query);
 
 
+					echo "<td>";
+					echo "<table class='table'><tbody>";
+				while($row2 = mysqli_fetch_assoc($q2)){
+					//get product info
+					$query = "SELECT * FROM products WHERE id=".$row2['product_id'];
+					$qprod = mysqli_query($conn, $query);
+					$productname = mysqli_fetch_assoc($qprod);
+
+					echo "<tr><td>".$productname['title']."</td>";
+
+					//get supplier info
+					$query = "SELECT * FROM user_supplier WHERE id=".$row2['supplier_id'];
+					$qsup = mysqli_query($conn, $query);
+					$suppliername = mysqli_fetch_assoc($qsup);
+
+					echo "<td>".$suppliername['nama_supplier']."</td>";
+					echo "<td>".$row2['qty']."</td>";
+					echo "<td>".$row2['subtotal']."</td>";
+					echo "<td>".$row2['status']."</td></tr>";
+				}
+
+					echo "</table>";
+					echo "</td>";
+					echo "<td>".$row['total_amount']."</td>";
+					echo "<td>".$row['status']."</td>";
+					echo "<td>".$row['date']."</td>";
 			}
 			?>
 	</table>
-	<script>
-		function deleteItem(id_delete) {
-			
-			var isSure= confirm("Are you sure?");
-			if(isSure==true){
-				
-				//header("Location: deleteProduct.php?id="+id_delete);
-				window.location.href= "deleteProduct.php?id="+id_delete;
-			}
-		}
-
-	</script>
 </body>
 </html>
