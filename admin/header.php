@@ -60,8 +60,7 @@ if(!isset($_SESSION)){
                   <ul class="dropdown-menu" role="menu">
                     <li><a class="nav-link" href="viewProduct.php" style="color: #000000">View All Products</a></li>
                     <li><a class="nav-link" href="insertProduct.php" style="color: #000000">Insert Product</a></li>
-                    
-                    
+                    <li><a class="nav-link" href="viewTransactions.php" style="color: #000000">View Transactions</a></li>
                     
                   </ul>
                 </li>
